@@ -1,0 +1,92 @@
+{
+  "ignorePatterns": ["build/**"],
+  "env": {
+    "react-native/react-native": true
+  },
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:prettier/recommended",
+    "eslint-config-prettier"
+  ],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 8,
+    "requireConfigFile": false
+  },
+  // IMPORT HELPERS PLUGIN
+  "plugins": [
+    "eslint-plugin-import-helpers",
+    "react-native",
+    "react",
+    "react-hooks",
+    "prettier"
+  ],
+  "rules": {
+    "comma-dangle": "off",
+    "prettier/prettier": [
+      "warn",
+      {
+        "endOfLine": "off"
+      }
+    ],
+    "import-helpers/order-imports": "off",
+    "no-unused-vars": ["warn"],
+    "no-multiple-empty-lines": [
+      "error",
+      {
+        "max": 1
+      }
+    ],
+    // REACT/ESLINT
+    "react/destructuring-assignment": "off",
+    "react/jsx-max-props-per-line": [
+      "error",
+      {
+        "maximum": 3
+      }
+    ],
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "custom": "ignore"
+      }
+    ],
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "off",
+    "sort-imports": "off",
+    // ESLINT OFF
+    "react/function-component-definition": "off",
+    "react/button-has-type": "off",
+    "react/require-default-props": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-sort-props": "off",
+    "no-plusplus": "off",
+    "no-nested-ternary": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "import/prefer-default-export": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "no-shadow": "off",
+    "global-require": "off",
+    "no-use-before-define": "off",
+    "camelcase": "off",
+    "prefer-template": "off",
+    "default-param-last": "off",
+    "linebreak-style": "off",
+    "object-shorthand": "off",
+    "no-useless-escape": "off",
+    "guard-for-in": "off",
+    "no-restricted-syntax": "off",
+    "react/style-prop-object": "off",
+    "no-prototype-builtins": "off",
+    "no-underscore-dangle": "off",
+    "no-case-declarations": "off"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
