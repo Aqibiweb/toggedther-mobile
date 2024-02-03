@@ -81,7 +81,7 @@ export const register = (email, password, repeated_password) => {
           repeated_password,
         },
       }).then((res)=>console.log('res---',res.data))
-      console.log('User login---',data)
+      console.log('Complete url---',data)
       await AsyncStorage.setItem(
         '@userData',
         JSON.stringify({
@@ -97,7 +97,6 @@ export const register = (email, password, repeated_password) => {
         payload: data,
       });
     } catch (error) {
-      console.log('error---',error)
       dispatch({
         type: a.USER_REGISTER_FAIL,
         payload: error,
@@ -141,6 +140,7 @@ export const login = (email, password) => {
         payload: data,
       });
     } catch (error) {
+      console.log('Error---',`url ${BASE_URL}api/v1/users/login/`, error.message)
       dispatch({
         type: a.USER_LOGIN_FAIL,
         payload: error,
