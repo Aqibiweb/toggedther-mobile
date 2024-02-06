@@ -21,6 +21,7 @@ const StartupScreen = ({ navigation }) => {
 
   const checkToken = async () => {
     const userData = JSON.parse(await AsyncStorage.getItem('@userData'));
+    console.log("User data ---",userData)
 
     if (userData && userData.has_account) {
       const currentTime = Date.now();

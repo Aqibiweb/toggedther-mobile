@@ -82,7 +82,7 @@ const LikesScreen = (props) => {
   useEffect(() => {
     if (isMatch(likeData)) {
       props.navigation.navigate('SwipeMatch', {
-        likeData: likeData,
+        likeData: '',
       });
     }
 

@@ -11,7 +11,7 @@ import {
 import { useSelector, useDispatch } from 'react-redux';
 import { Context } from '../../context/ContextProvider';
 import { useActionSheet } from '@expo/react-native-action-sheet';
-
+import { getPostCall } from '../../utils/service';
 import {
   addConversationMessage,
   listMessages,
@@ -40,6 +40,7 @@ const ChatScreen = (props) => {
   const { profileContext } = useContext(Context);
   const [chatMessage, setChatMessage] = useState('');
   const [chatSocket, setChatSocket] = useState(null);
+  const [resultData, setResultData] = useState(null);
   const dispatch = useDispatch();
 
   const deleteConversationReducer = useSelector(
@@ -405,6 +406,21 @@ const ChatScreen = (props) => {
         chatMessage={chatMessage}
         setChatMessage={setChatMessage}
         handleSendMessage={handleSendMessage}
+        overall={resultData?.overall}
+        grammerResultPress={()=>{
+          props.navigation.navigate('GrammarResult',{
+            resultData});
+        }}
+   
+        spellCheckonPress={()=>{
+          console.log('api hit ---')
+          getPostCall('/api/v1/chats/actions/grammar-check/',"POST",{
+            receipient_id:profileContext.id,
+            message:chatMessage
+          }).then((res)=>{setResultData(res?.data)}).catch((error)=>{console.log('Error ---',error)}
+          )
+        }
+        }
       />
     </KeyboardAvoidingView>
   );

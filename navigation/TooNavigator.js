@@ -1,11 +1,9 @@
 import React, { useContext } from 'react';
 import { Platform, Text, View, Image } from 'react-native';
 import { Context } from '../context/ContextProvider';
-
 import { createStackNavigator } from '@react-navigation/stack';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import {
   AntDesign,
   Ionicons,
@@ -43,7 +41,7 @@ import ChatScreen from '../screens/Chat/ChatScreen';
 import GroupChatScreen from '../screens/Chat/GroupChatScreen';
 import MatchesScreen from '../screens/Chat/MatchesScreen';
 import ItsMatchScreenModal from '../screens/ItsMatchModal/ItsMatchScreenModal';
-
+import ItsGrammarResultModal from '../screens/itsGrammarResultModal/itsGrammarResultModal';
 import Avatar from '../components/MyProfile/Avatar';
 import HeaderButtom from '../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
@@ -248,6 +246,12 @@ const ChatNavigator = () => {
         }}
       />
       <Stack.Screen
+        
+        name="GrammarResult"
+        component={ItsGrammarResultModal}
+        options={{ presentation: 'modal',title:'' }}
+      />
+      <Stack.Screen
         name="GroupChat"
         component={GroupChatScreen}
         options={{
@@ -278,6 +282,7 @@ const ChatNavigator = () => {
           ),
         })}
       />
+
     </Stack.Navigator>
   );
 };
