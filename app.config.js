@@ -3,7 +3,7 @@ dotenv.config();
 
 export default () => ({
   expo: {
-    name: 'Toogether',
+    name: 'Ainni',
     description: 'Making university life more fun',
     slug: 'toogether-app',
     owner: 'damian_stone',
