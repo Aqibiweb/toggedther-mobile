@@ -5,8 +5,8 @@ export default () => ({
   expo: {
     name: 'Ainni',
     description: 'Making university life more fun',
-    slug: 'toogether-app',
-    owner: 'damian_stone',
+    slug: 'ainni',
+    owner: 'app_dev_097',
     privacy: 'public',
     version: '1.1.0',
     orientation: 'portrait',
@@ -41,9 +41,9 @@ export default () => ({
       ROCKET_API_URL: process.env.ROCKET_API_URL || null,
       IOS_LOCAL_URL: process.env.IOS_LOCAL_URL || null,
       ANDROID_LOCAL_URL: process.env.ANDROID_LOCAL_URL || null,
-      eas: {
-        projectId: '1bbdaff3-3c02-445d-97e6-bc150d65197e',
-      },
+      "eas": {
+        "projectId": "edcc8d55-f6e2-4ddc-abcd-fe32955b4051"
+      }  
     },
   },
 });
