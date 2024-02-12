@@ -38,34 +38,42 @@ const ItsGrammarResultModal = (props) => {
         Overall:
       </Text>
       <Text style={styles.secondaryText}>
-        {resultData?.overall}
+        {resultData?.Overall}
       </Text>
       </View>
       <View style={styles.textContainer}>
       <Text style={styles.primaryText}>
-      Spelling:</Text>
+      Correct Grammar:</Text>
       <Text style={styles.secondaryText}>
-        {resultData?.spelling}
+        {resultData["Correct Grammar"]}
       </Text>
       </View>
       <View style={styles.textContainer}>
       <Text style={styles.primaryText}>
-      Grammar:</Text>
+      Lack of Spelling Error:</Text>
       <Text style={styles.secondaryText}>
         {
-          resultData?.grammar
+resultData["Lack of Spelling Error"]        }
+      </Text>
+      </View>
+      <View style={styles.textContainer}>
+      <Text style={styles.primaryText}>
+      Professional Tone:</Text>
+      <Text style={styles.secondaryText}>
+        {
+          resultData["Professional Tone"] 
         }
       </Text>
       </View>
       <View style={styles.textContainer}>
       <Text style={styles.primaryText}>
-      Readability:</Text>
+      Suggested Message:</Text>
+      </View>
       <Text style={styles.secondaryText}>
         {
-          resultData?.readability
+          resultData["Suggested Message"] 
         }
       </Text>
-      </View>
     </View>
   );
 };

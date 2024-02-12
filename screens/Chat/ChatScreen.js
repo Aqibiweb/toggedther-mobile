@@ -90,6 +90,7 @@ const ChatScreen = (props) => {
   }, []);
   // Function to remove spaces from object keys
 function removeSpacesFromKeys(obj) {
+  console.log('Object---',obj)
   const newObj = {};
   Object.keys(obj).forEach(key => {
     const newKey = key.replace(/\s+/g, ''); // Remove spaces from the key
@@ -426,24 +427,29 @@ function removeSpacesFromKeys(obj) {
         chatMessage={chatMessage}
         setChatMessage={setChatMessage}
         handleSendMessage={handleSendMessage}
-        overall={resultData?.overall}
+        overall={resultData?.Overall}
         grammerResultPress={()=>{
           props.navigation.navigate('GrammarResult',{
             resultData});
         }}
    
         spellCheckonPress={()=>{
-          console.log('api hit ---')
-          getPostCall('/api/v1/chats/actions/grammar-check/',"POST",{
-            recipient_name:receiverProfile?.name,
-            message:chatMessage,
-            user_name:profileContext?.name,
-            history_message:chatMessage
-          }).then((res)=>{
-            console?.log('Response data',JSON.parse(JSON.stringify(res?.data)))
-            // setResultData(res?.data)
-          }).catch((error)=>{console.log('Error ---',error)}
-          )
+          if(chatMessage.length>0)
+          {
+            console.log('api hit ---')
+            getPostCall('/api/v1/chats/actions/grammar-check/',"POST",{
+              recipient_name:receiverProfile?.name,
+              message:chatMessage,
+              user_name:profileContext?.name,
+              history_message:chatMessage
+            }).then((res)=>{
+              let response=JSON.parse(res?.data?.outputs?.grammar)
+              console?.log('Response data',response["Correct Grammar"])
+              setResultData(response)
+            }).catch((error)=>{console.log('Error ---',error)}
+            )
+          }
+
         }
         }
       />
