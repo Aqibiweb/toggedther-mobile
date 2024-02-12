@@ -75,9 +75,29 @@ const ChatScreen = (props) => {
     data: messagesData,
   } = conversationReducer;
 
+
+
   useEffect(() => {
     dispatch(listMessages(conversationId));
+    const response = {
+      "outputs": {
+        "grammar": "{\"Overall\": 3,\"Correct Grammar\": 4,\"Lack of Spelling Error\": 5,\"Professional Tone\": 3,\"Suggested Message\": \"Hello Test004, is there any issue you would like to discuss?\"}"
+      }
+    };
+    const grammarString = response.outputs.grammar.replace(/\\"/g, '"');
+    const grammarObject = JSON.parse(grammarString);
+    console.log('Data---', removeSpacesFromKeys(grammarObject)?.CorrectGrammar);
   }, []);
+  // Function to remove spaces from object keys
+function removeSpacesFromKeys(obj) {
+  const newObj = {};
+  Object.keys(obj).forEach(key => {
+    const newKey = key.replace(/\s+/g, ''); // Remove spaces from the key
+    newObj[newKey] = obj[key];
+  });
+  return newObj;
+}
+
 
   useEffect(() => {
     const wsUrl = encodeURI(
@@ -415,9 +435,14 @@ const ChatScreen = (props) => {
         spellCheckonPress={()=>{
           console.log('api hit ---')
           getPostCall('/api/v1/chats/actions/grammar-check/',"POST",{
-            receipient_id:profileContext.id,
-            message:chatMessage
-          }).then((res)=>{setResultData(res?.data)}).catch((error)=>{console.log('Error ---',error)}
+            recipient_name:receiverProfile?.name,
+            message:chatMessage,
+            user_name:profileContext?.name,
+            history_message:chatMessage
+          }).then((res)=>{
+            console?.log('Response data',JSON.parse(JSON.stringify(res?.data)))
+            // setResultData(res?.data)
+          }).catch((error)=>{console.log('Error ---',error)}
           )
         }
         }

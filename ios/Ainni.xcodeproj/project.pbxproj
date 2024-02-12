@@ -166,7 +166,7 @@
 				LastUpgradeCheck = 1130;
 				TargetAttributes = {
 					13B07F861A680F5B00A75B9A = {
-						DevelopmentTeam = XK26D4FAKN;
+						DevelopmentTeam = DLQV9ACDYB;
 						LastSwiftMigration = 1250;
 						ProvisioningStyle = Automatic;
 					};
@@ -306,7 +306,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.5;
-				DEVELOPMENT_TEAM = XK26D4FAKN;
+				DEVELOPMENT_TEAM = DLQV9ACDYB;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -346,7 +346,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.1.5;
-				DEVELOPMENT_TEAM = XK26D4FAKN;
+				DEVELOPMENT_TEAM = DLQV9ACDYB;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = Toogether/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Ainni;
