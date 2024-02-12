@@ -10,17 +10,17 @@ import {
   Alert,
 } from 'react-native';
 import { Entypo, MaterialCommunityIcons } from '@expo/vector-icons';
-
 import Colors from '../../constants/Colors';
 import sendimg from '../../assets/images/send-button.png';
 import { MaterialIcons } from 'expo-vector-icons';
+import Loader from '../UI/Loader';
 
-const ChatTextInput = ({ chatMessage, setChatMessage, handleSendMessage,grammerResultPress,overall,spellCheckonPress }) => {
+const ChatTextInput = ({ chatMessage, setChatMessage, handleSendMessage,grammerResultPress,overall,spellCheckonPress,isLoading }) => {
   const [inputHeight, setInputHeight] = useState(0);
 
   const handleTextChange = (newText) => {
     setChatMessage(newText);
-  };
+  };  
 
   const handleContentSizeChange = (event) => {
     setInputHeight(event.nativeEvent.contentSize.height);
@@ -32,7 +32,9 @@ const ChatTextInput = ({ chatMessage, setChatMessage, handleSendMessage,grammerR
 
   return (
     <View style={styles.container}>
-        {
+    <View style={styles.secondaryContainer}>
+      <View>
+      {
           overall&&(
             <TouchableOpacity onPress={grammerResultPress} style={styles.button3}>
             <Text>
@@ -41,10 +43,11 @@ const ChatTextInput = ({ chatMessage, setChatMessage, handleSendMessage,grammerR
           </TouchableOpacity>
           )
         }
-    <View style={styles.secondaryContainer}>
-      <View>
-      <TouchableOpacity onPress={spellCheckonPress} style={styles.button1}>
-        <MaterialIcons color="white" name="spellcheck" size={24} />
+      <TouchableOpacity onPress={spellCheckonPress} style={styles.button1} disabled={isLoading}>
+        {
+          isLoading ?         <Loader  color={'white'}/>
+          :<MaterialIcons color="white" name="spellcheck" size={24} /> 
+        }
       </TouchableOpacity>
       </View>
       <View style={styles.inputMessageContainer}>
@@ -89,17 +92,18 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     alignItems: 'center',
     alignContent: 'center',
-    width: '100%',
-  },
+    width: '100%'  },
 
   inputMessageContainer: {
     width: '70%',
     backgroundColor: Colors.white,
     borderRadius: 20,
     minHeight: 40,
+    alignItems:'baseline',
     justifyContent: 'center',
     paddingHorizontal: 20,
     paddingVertical: 10,
+    alignSelf: 'flex-end',
   },
 
   inputMessage: {

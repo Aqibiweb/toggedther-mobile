@@ -2,7 +2,7 @@ import React from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import Colors from '../../constants/Colors';
 
-const Loader = ({ size }) => {
+const Loader = ({ size,color }) => {
   return (
     <View
       style={{
@@ -12,9 +12,9 @@ const Loader = ({ size }) => {
         alignItems: 'center',
       }}
     >
-      <ActivityIndicator size={size} color={Colors.icons} />
+      <ActivityIndicator size={size} color={color?color:Colors.icons} />
     </View>
   );
 };
-
+  
 export default Loader;

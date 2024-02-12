@@ -40,6 +40,7 @@ const ChatScreen = (props) => {
   const { profileContext } = useContext(Context);
   const [chatMessage, setChatMessage] = useState('');
   const [chatSocket, setChatSocket] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [resultData, setResultData] = useState(null);
   const dispatch = useDispatch();
 
@@ -424,6 +425,7 @@ function removeSpacesFromKeys(obj) {
         </View>
       )}
       <ChatTextInput
+        isLoading={isLoading}
         chatMessage={chatMessage}
         setChatMessage={setChatMessage}
         handleSendMessage={handleSendMessage}
@@ -436,6 +438,7 @@ function removeSpacesFromKeys(obj) {
         spellCheckonPress={()=>{
           if(chatMessage.length>0)
           {
+            setIsLoading(true)
             console.log('api hit ---')
             getPostCall('/api/v1/chats/actions/grammar-check/',"POST",{
               recipient_name:receiverProfile?.name,
@@ -446,7 +449,10 @@ function removeSpacesFromKeys(obj) {
               let response=JSON.parse(res?.data?.outputs?.grammar)
               console?.log('Response data',response["Correct Grammar"])
               setResultData(response)
-            }).catch((error)=>{console.log('Error ---',error)}
+              setIsLoading(false)
+            }).catch((error)=>{
+              setIsLoading(false)
+              console.log('Error ---',error)}
             )
           }
 
