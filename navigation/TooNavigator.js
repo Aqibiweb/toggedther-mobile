@@ -45,6 +45,7 @@ import ItsGrammarResultModal from '../screens/itsGrammarResultModal/itsGrammarRe
 import Avatar from '../components/MyProfile/Avatar';
 import HeaderButtom from '../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
+import ChatBot from '../screens/ChatBot/ChatBot';
 
 const Stack = createStackNavigator();
 
@@ -527,8 +528,8 @@ const ToogetherTab = (props) => {
         }}
       />
       <Tab.Screen
-        name="GroupNavigator"
-        component={GroupNavigator}
+        name="ChatBot"
+        component={ChatBot}
         options={({ navigation, route }) => ({
           tabBarIcon: (tabInfo) => {
             return (

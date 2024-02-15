@@ -12,6 +12,7 @@ import * as SplashScreen from 'expo-splash-screen';
 import AppNavigator from './navigation/AppNavigator';
 import { ContextProvider } from './context/ContextProvider';
 import store from './store/store';
+import { View } from 'react-native';
 
 SplashScreen.preventAutoHideAsync();
 
