@@ -46,7 +46,7 @@ import Avatar from '../components/MyProfile/Avatar';
 import HeaderButtom from '../components/UI/HeaderButton';
 import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import ChatBot from '../screens/ChatBot/ChatBot';
-
+import ChatBotScreen from '../screens/Chat/ChatBotScreen';
 const Stack = createStackNavigator();
 
 const defaultNavOptions = {
@@ -246,8 +246,14 @@ const ChatNavigator = () => {
           headerShown: false,
         }}
       />
+            <Stack.Screen
+        name="ChatBotScreen"
+        component={ChatBotScreen}
+        options={{
+          headerShown: false,
+        }}
+      />
       <Stack.Screen
-        
         name="GrammarResult"
         component={ItsGrammarResultModal}
         options={{ presentation: 'modal',title:'' }}
@@ -530,7 +536,7 @@ const ToogetherTab = (props) => {
       <Tab.Screen
         name="ChatBot"
         component={ChatBot}
-        options={({ navigation, route }) => ({
+        options={{
           tabBarIcon: (tabInfo) => {
             return (
               <MaterialCommunityIcons
@@ -543,7 +549,7 @@ const ToogetherTab = (props) => {
           tabBarColor: Colors.orange,
           tabBarLabel:
             Platform.OS === 'android' ? <Text>Create group</Text> : '',
-        })}
+        }}
       />
     </Tab.Navigator>
   );

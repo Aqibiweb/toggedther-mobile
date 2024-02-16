@@ -114,7 +114,7 @@ function removeSpacesFromKeys(obj) {
     newChatSocket.onmessage = (event) => {
       const jsonMessage = JSON.parse(event.data);
       const messageWithLinks = getMessageWithLinks(jsonMessage.message);
-
+      console.log('Chat---',messageWithLinks)
       dispatch(
         addConversationMessage({
           id: jsonMessage.id,
@@ -358,7 +358,7 @@ function removeSpacesFromKeys(obj) {
           backgroundColor: Colors.bg,
         }}
       />
-      ;
+      
     </View>;
   }
 

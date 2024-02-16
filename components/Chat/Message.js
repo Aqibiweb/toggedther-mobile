@@ -66,7 +66,15 @@ const Message = ({ isMyMessage, message, onShowProfile }) => {
         </View>
         <Text style={styles.time}>{message.sent_at}</Text>
       </View>
-      <TouchableOpacity
+      {
+        
+      }
+      {
+        message?.sender_photo==='app_buddy'?   <View style={styles?.button3}>
+              <Text>Pic</Text>
+
+        </View>  :
+        <TouchableOpacity
         style={styles.singleImageContainer}
         onPress={onShowProfile}
       >
@@ -74,7 +82,7 @@ const Message = ({ isMyMessage, message, onShowProfile }) => {
           source={
             message?.sender_photo
               ? {
-                  uri: `${getImage(message.sender_photo.image)}`,
+                  uri: `${getImage(message.sender_photo)}`,
                   priority: FastImage.priority.high,
                 }
               : require('../../assets/images/placeholder-profile.png')
@@ -82,6 +90,9 @@ const Message = ({ isMyMessage, message, onShowProfile }) => {
           style={styles.img}
         />
       </TouchableOpacity>
+
+      }
+
     </View>
   );
 };
@@ -164,5 +175,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
     borderRadius: 100,
+  },
+  button3: {
+    width: 35,
+    height: 35,
+    borderRadius: 100,
+    justifyContent:'center',
+    alignItems:'center',
+    backgroundColor: 'rgb(243,175,86)',
   },
 });
